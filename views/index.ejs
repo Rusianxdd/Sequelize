@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="../public/src/css/styles.css">
+    <title>Sequelize</title>
+</head>
+<body>
+
+    <div id="agregar_usuario">
+        
+       
+        
+        <form action="/save" method="POST" id="formulario_usuario">
+            <div>
+                <h1>Agregar Usuario</h1>
+            </div>
+
+            <label for="nombre">NOMBRE</label>
+            <input type="text" name="nombre" placeholder="Nombre">
+            <label for="apellido">APELLIDO</label>
+            <input type="text" name="apellido" placeholder="Apellido">
+            <label for="edad">EDAD</label>
+            <input type="number" name="edad" placeholder="Edad">
+            <label for="fecha_nacimiento">NACIMIENTO</label>
+            <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento">
+            <label for="direccion">DIRECCION</label>
+            <input type="text" name="direccion" placeholder="Direccion">
+            <label for="dpi">DPI</label>
+            <input type="number" name="dpi" placeholder="DPI">
+
+                <button type="submit" >Guardar</button>
+                <a id="cancelar_usuario" >Cancelar</a>
+   
+         
+        </form>
+    </div>
+
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>Inicio</li>
+                    <li>Cuentas</li>
+                    <li>Blog</li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <a id="agregar" type="button">Agregar</a>
+        </section>
+        <section id="Usuarios"> 
+            <h1>Usuarios</h1>
+            <table>
+                <thead>
+                    <th>id</th>
+                    <th>nombre</th>
+                    <th>apellido</th>
+                    <th>edad</th>
+                    <th>nacimiento</th>
+                    <th>direccion</th>
+                    <th>dpi</th>
+                    <th>Opciones</th>
+                </thead>
+                <tbody>
+                    <% results.forEach((user)=>{ %>
+                    <tr>
+                        <td><%= user.idusuario %></td>
+                        <td><%= user.nombre %></td>
+                        <td><%= user.apellido %></td>
+                        <td><%= user.edad %></td>
+                        <td><%= user.fecha_nacimiento %></td>
+                        <td><%= user.direccion %></td>
+                        <td><%= user.dpi %></td>
+                        <td class="opciones_usuario">
+                            <a href="/editar/<%= user.idusuario %>" id="actualizar" >Editar</a>
+                            <a href="/eliminar/<%= user.idusuario %>">Eliminar</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="../public/src/js/code.js"></script>
+</body>
+</html>
